@@ -6,7 +6,7 @@ import { Request, Response } from 'express';
 import ThreadClass from '../models/Threads';
 import UserClass from '../models/Users';
 import BanClass from '../models/Bans';
-import AdminClass from 'src/models/Admin';
+import AdminClass from '../models/Admin';
 
 import { User } from '../models/interface';
 import StatusCodes from 'http-status-codes';
