@@ -4,41 +4,27 @@ import Mongoose from 'mongoose';
 import { User } from './interface';
 import GenerateUID from '../commons/generateUID';
 
-class UserClass implements User {
+class UserClass {
     private static UserSchema = new Mongoose.Schema<User>({
-        username    :{ type: String, required: true, },
-        avatar      :{ type: String, required: true, },
-        description :{ type: String, required: true, },
+        username    :{ type: String, required: true, maxLength: 24 },
+        avatar      :{ type: Number, required: true, },
+        description :{ type: String, required: true, maxLength: 160},
         lastreply   :{ type: Number },
         isAdmin     :{ type: Boolean },
-        _token      :{ type: String, required: true, },
-
+        _token      :{ type: String, required: true, }
     });
     private static model = Mongoose.model('users', UserClass.UserSchema);
-
     public mymodel     :Mongoose.Model<User> | any;
-    public username    :string;
-    public avatar      :number;
-    public description :string;
-    public lastreply   :number;
-    public _id         :string;
-    public _token      :string;
 
     constructor(props :User | any) {
-        this.username = props.username;
-        this.avatar   = props.avatar;
-        this.description = props.description;
         this.mymodel = new  UserClass.model({
-            username:       this.username,
-            avatar:         this.avatar,
-            description:    this.description,
+            username:       props.username,
+            avatar:         props.avatar,
+            description:    props.description,
             _token:         GenerateUID(),
             lastreply:      0,
             isAdmin:        false,
         });
-        this.lastreply  = 0;
-        this._id        = this.mymodel._id;
-        this._token     = this.mymodel._token;
     }
 
     public async save() {
@@ -49,20 +35,23 @@ class UserClass implements User {
         return await UserClass.model.find();
     }
 
-    static async findUser(userid :string) :Promise<any> {
+    static async findUser(userid :string) :Promise<User | undefined> {
         return await UserClass.model.findOne({ _id: userid}, (err: any, obj :any) => {
+            if(err) return undefined;
             return obj;
         });
     }
 
-    static async findAdmin() :Promise<any> {
+    static async findAdmin() :Promise<User | undefined> {
         return await UserClass.model.findOne({ isAdmin: true}, (err: any, obj :any) => {
+            if(err) return undefined;
             return obj;
         });
     }
 
-    static async findUserByToken(usertoken :string) :Promise<any> {
+    static async findUserByToken(usertoken :string) :Promise<User | undefined> {
         return await UserClass.model.findOne({ _token: usertoken}, (err: any, obj :any) => {
+            if(err) return undefined;
             return obj;
         });
     }

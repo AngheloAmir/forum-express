@@ -11,8 +11,8 @@ class ThreadClass implements Thread {
             uid:        { type: String, required: true }
         },
         thread: {
-            title:      { type: String, required: true },
-            text:       { type: String, required: true },
+            title:      { type: String, required: true, maxLength: 64 },
+            text:       { type: String, required: true, maxLength: 240 },
             date:       { type: Number }
         },
         replies: [
@@ -21,9 +21,9 @@ class ThreadClass implements Thread {
                 userid:     { type: String, required: true },
                 avatar:     { type: Number, required: true },
                 _token:     { type: String, required: true },
-                text:       { type: String, required: true },
+                text:       { type: String, required: true, maxLength: 240 },
+                isAdmin:    { type: Boolean, require: true },
                 time:       { type: Number },
-
             }
         ],
         _token:        { type: String },
@@ -82,7 +82,7 @@ class ThreadClass implements Thread {
     }
 
     static async makeReply(threadid :string, username :string, userid :any,
-                             avatar :number, _token: any, text :string) :Promise<any> {
+                             avatar :number, _token: any, text :string, isAdmin :boolean) :Promise<any> {
         const currentThread = await ThreadClass.findThread(threadid);
     //check if the thread exist
         if(!currentThread)
@@ -92,7 +92,7 @@ class ThreadClass implements Thread {
             $set: {
                 replies: [
                     ...currentThread.replies,
-                    { username, userid, avatar, _token, text, time: Date.now() }
+                    { username, userid, avatar, _token, text, time: Date.now(), isAdmin: isAdmin }
                 ]
             }
             }, undefined,

@@ -1,4 +1,5 @@
 ## August 12, Version 1.6 Added Admin login
+-Increase spam time to 30 seconds
 -Added admin login
 -Added the admin ability to reply
 

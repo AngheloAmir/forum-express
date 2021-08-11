@@ -5,6 +5,7 @@
 
 import { Request, Response } from 'express';
 import UserClass from '../models/Users';
+import { User } from '../models/interface';
 import StatusCodes from 'http-status-codes';
 const { BAD_REQUEST, FORBIDDEN } = StatusCodes;
 
@@ -39,7 +40,7 @@ export async function updateUser(req :Request, res :Response) {
     if( !UserClass.isValidUser(req.body) )
         return res.status(BAD_REQUEST).json({message: "Insufficient user information"});
     try {
-        const theUser = await UserClass.findUser(req.body._id);
+        const theUser :User | undefined = await UserClass.findUser(req.body._id);
         if(!theUser)
             return res.status(BAD_REQUEST).json({message: "User not found"});
         if(theUser._token != req.body._token)

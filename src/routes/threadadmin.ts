@@ -139,7 +139,8 @@ export async function AdminMakeReply(req :Request, res :Response) {
                 adminAccount._id,
                 adminAccount.avatar,
                 adminAccount._token,
-                req.body.text );
+                req.body.text,
+                true);
             if(result.err)
                 throw new Error(result.err);
             res.json(result);

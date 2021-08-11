@@ -47,4 +47,3 @@ export interface User {
     _token?     :string;
     lastreply?  :number; //last reply time, to prevent spamming
 }
-

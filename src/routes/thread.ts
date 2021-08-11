@@ -94,7 +94,7 @@ export async function makeReply(req :Request, res :Response) {
 
     try {
         const result = await ThreadClass.makeReply(
-            req.body.threadid, req.body.username, req.body.userid, req.body.avatar, req.body._token, req.body.text );
+            req.body.threadid, req.body.username, req.body.userid, req.body.avatar, req.body._token, req.body.text, false );
         res.json(result);
     }
     catch(err) {
