@@ -32,6 +32,13 @@ export interface TReplies {
 }
 
 //=========================================================
+export interface Admin {
+    username    :string;
+    password    :string;
+    _token      :string;
+}
+
+
 export interface User {
     username    :string;
     avatar      :number;

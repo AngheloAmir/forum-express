@@ -8,8 +8,8 @@ const router = Router();
 import { getAllThreads, addThread, deleteThread, makeReply, deleteReply } from './thread';
 import { addUser,updateUser, getUserInfo } from './user';
 import { getAllUser, deleteAThread, deleteAReplyAdmin,
-         getAllThreadsWithToken, banUser,
-         getAllBannedUsers, removeAllBans } from './threadadmin';
+         getAllThreadsWithToken, banUser, adminLogin,
+         getAllBannedUsers, removeAllBans, AdminMakeReply } from './threadadmin';
 
 router.get('/api/thread',           getAllThreads);
 router.post('/api/thread/add',      addThread);
@@ -23,6 +23,8 @@ router.post('/api/user/viewUser',   getUserInfo);
 
 //router.post('/api/thread/admin/clearForum',     clearForum);
 //router.post('/api/admin/deleteAllUser',         deleteAllUser);
+router.post('/api/thread/admin/login/',         adminLogin);
+router.post('/api/thread/admin/reply/',         AdminMakeReply);
 router.post('/api/thread/admin/removeThread',   deleteAThread);
 router.post('/api/thread/admin/removereply',    deleteAReplyAdmin);
 router.post('/api/thread/admin/getAllThread',   getAllThreadsWithToken);

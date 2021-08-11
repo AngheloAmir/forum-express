@@ -15,9 +15,9 @@ export async function getUserInfo(req :Request, res :Response) {
     if(!auser)
         return res.status(BAD_REQUEST).json({err: "User not found"});
     const hideToken = {
-        username: auser.username,
-        avatar: auser.avatar,
-        description: auser.description,
+        username:       auser.username,
+        avatar:         auser.avatar,
+        description:    auser.description,
     };
     res.json(hideToken);
 }

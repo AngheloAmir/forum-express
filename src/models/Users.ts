@@ -10,6 +10,7 @@ class UserClass implements User {
         avatar      :{ type: String, required: true, },
         description :{ type: String, required: true, },
         lastreply   :{ type: Number },
+        isAdmin     :{ type: Boolean },
         _token      :{ type: String, required: true, },
 
     });
@@ -32,7 +33,8 @@ class UserClass implements User {
             avatar:         this.avatar,
             description:    this.description,
             _token:         GenerateUID(),
-            lastreply:      0
+            lastreply:      0,
+            isAdmin:        false,
         });
         this.lastreply  = 0;
         this._id        = this.mymodel._id;
@@ -49,6 +51,12 @@ class UserClass implements User {
 
     static async findUser(userid :string) :Promise<any> {
         return await UserClass.model.findOne({ _id: userid}, (err: any, obj :any) => {
+            return obj;
+        });
+    }
+
+    static async findAdmin() :Promise<any> {
+        return await UserClass.model.findOne({ isAdmin: true}, (err: any, obj :any) => {
             return obj;
         });
     }

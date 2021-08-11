@@ -1,3 +1,7 @@
+## August 12, Version 1.6 Added Admin login
+-Added admin login
+-Added the admin ability to reply
+
 ## August 10, Version 1.5 Production build
 -Uploaded the app to heroku
 

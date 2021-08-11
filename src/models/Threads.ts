@@ -81,8 +81,8 @@ class ThreadClass implements Thread {
         });
     }
 
-    static async makeReply(threadid :string, username :string, userid :string,
-                             avatar :number, _token: string, text :string) :Promise<any> {
+    static async makeReply(threadid :string, username :string, userid :any,
+                             avatar :number, _token: any, text :string) :Promise<any> {
         const currentThread = await ThreadClass.findThread(threadid);
     //check if the thread exist
         if(!currentThread)
