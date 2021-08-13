@@ -12,8 +12,7 @@ Lets user to change thier profile avatar, name and description at anytime.
 The system has the built in admin panel that enables the admin to delete a post or replies if required and even block user that makes spam or others things.
 
 ### Admin panel
-![Login](img/login.jpg?raw=true "Login")  
-![Threads](img/main.jpg?raw=true "Threads")
+![Login](img/login.jpg?raw=true "Login") ![Threads](img/main.jpg?raw=true "Threads")
 
 ## Technology stack
 This application uses MongoDB, React.js for admin panel, and Express.js.
