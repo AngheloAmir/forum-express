@@ -1,9 +1,8 @@
 /node_modules
-/dist
 /backup
 /rest
-/build
+#/dist
 
 ## Remove the lines for production
-/env/development.env
-/env/production.env
+#/env/development.env
+#/env/production.env
