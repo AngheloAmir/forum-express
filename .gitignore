@@ -3,6 +3,6 @@
 /rest
 
 ## Comment the lines for production
-/dist
-/env/development.env
-/env/production.env
+#/dist
+#/env/development.env
+#/env/production.env
