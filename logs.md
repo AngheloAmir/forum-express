@@ -1,3 +1,6 @@
+##August 14, Version 1.7 Admin panel update
+-Added new three screen for the panel admin
+
 ## August 12, Version 1.6 Added Admin login
 -Increase spam time to 30 seconds
 -Added admin login

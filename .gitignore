@@ -1,8 +1,8 @@
 /node_modules
 /backup
 /rest
-#/dist
 
-## Remove the lines for production
-#/env/development.env
-#/env/production.env
+## Comment the lines for production
+/dist
+/env/development.env
+/env/production.env
